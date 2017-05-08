@@ -1,4 +1,5 @@
 (function(){
+    
     var datepicker = {};
 
     datepicker.getMonthDate = function(year, month){

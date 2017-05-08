@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="ui_datepicker_wrapper">
-        <div class="ui_datepicker_header">
+        <!--<div class="ui_datepicker_header">
             <a href="javascript::;" class="ui_datepicker_btn ui_datepicker_prev_btn">&lt</a>
             <span class="ui_datepicker_curr_month">2016-12</span>
             <a href="javascript::;" class="ui_datepicker_btn ui_datepicker_next_btn">&gt</a>
@@ -75,9 +75,16 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div>-->
     </div>
+
+    <script type="text/javascript" src="./date.js"></script>
+    <script type="text/javascript" src="./main.js"></script>
     
-    <script src="./date.js"></script>
+    <script>
+        var monthDate = datepicker.getMonthDate(2017, 2);
+        console.log(monthDate);
+        datepicker.init(document.querySelector('.ui_datepicker_wrapper'))
+    </script>
 </body>
 </html>
