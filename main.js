@@ -54,16 +54,18 @@
         }
         if(direction === 'prev') month--;
         if(direction === 'next') month++;
-
+        
         var html = datepicker.buildUi(year, month);
         $wrapper = document.createElement('div');
         $wrapper.className = 'ui_datepicker_wrapper';
         $wrapper.innerHTML = html;
-        document.body.appendChild($wrapper);        
+        document.body.appendChild($wrapper);
     };
 
     datepicker.init = function(input){
+
         datepicker.render();
+
         var $input = document.querySelector(input);
         var isOpen = false;
         $input.addEventListener('click', function(){
@@ -81,13 +83,13 @@
             }
         }, false);
 
-        $wrapper.addEventListener('click', function(e){
+         $wrapper.addEventListener('click', function(e){
             var $target = e.target;
-            // if(!$target.classList.contains('ui_datepicker_btn')){
-            //     break;
-            // }
+            if(!$target.classList.contains('ui_datepicker_btn')) 
+                return;
             if($target.classList.contains('ui_datepicker_prev_btn')){
                 datepicker.render('prev');
+                console.log($wrapper);
             }else if($target.classList.contains('ui_datepicker_next_btn')){
                 datepicker.render('next');
             }
@@ -101,21 +103,21 @@
             $input.value = format(date);
             $wrapper.classList.remove('ui_datepicker_wrapper_show');
             isOpen = false;
-            
+
         }, false);
 
     };
 
+
+
     function format(date){
         ret = '';
-
         var padding = function(num){
             if(num <= 9){
                 return '0' + num;
             }
             return num;
         }
-
         ret += date.getFullYear() + '-';
         ret += padding(date.getMonth() + 1) + '-';
         ret += padding(date.getDate());
